@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //データ
-        ArrayList<String> todoList = new ArrayList<>();
+        //インスタンス生成
+        TodoService service = new TodoService();
         //スキャナー
         Scanner sc = new Scanner(System.in);
 
@@ -30,30 +30,19 @@ public class Main {
                 case 1:
                     System.out.print("タスク名を入力してください：");
                     String task = sc.next();
-                    todoList.add(task);
+                    service.addTask(task);
                     System.out.println("「" + task + "」を追加しました。");
                     break;
                 //一覧表示
                 case 2:
-                    System.out.println("===== タスク一覧 =====");
-                    for (int i = 0; i < todoList.size(); i++) {
-                        System.out.println((i + 1) + ". " + todoList.get(i));
-                    }
+                    service.showTask();
                     break;
                 //削除
                 case 3:
-                    System.out.println("===== タスク一覧 =====");
-                    for (int i = 0; i < todoList.size(); i++) {
-                        System.out.println((i + 1) + ". " + todoList.get(i));
-                    }
-                    System.out.println("削除するタスクを選択してください");
+                    service.showTask();
+                    System.out.println("削除する番号を選択してください");
                     int deleteNum = sc.nextInt();
-                    if (deleteNum >= 1 && deleteNum <= todoList.size()) {
-                        String removedTask = todoList.remove(deleteNum - 1);
-                        System.out.println("「" + removedTask + "」を削除しました。");
-                    } else {
-                        System.out.println("存在しない番号です。");
-                    }
+                    service.deleteTask(deleteNum);
                     break;
                 //終了
                 case 0:
