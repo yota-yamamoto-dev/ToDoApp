@@ -2,6 +2,7 @@ package ToDo;
 
 import java.util.ArrayList;
 
+//処理
 public class TodoService {
     //データ
     private ArrayList<String> todoList = new ArrayList<>();
