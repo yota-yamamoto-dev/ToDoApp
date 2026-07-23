@@ -1,7 +1,7 @@
 package ToDo;
 
 public class Todo {
-    private String task;
+    private final String task;
 
     public Todo(String task){
         this.task = task;
