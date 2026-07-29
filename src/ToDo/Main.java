@@ -16,6 +16,7 @@ public class Main {
             System.out.println("1. タスク追加");
             System.out.println("2. タスク一覧");
             System.out.println("3. タスク削除");
+            System.out.println("4. 完了切替");
             System.out.println("0. 終了");
             System.out.println();
 
@@ -39,14 +40,23 @@ public class Main {
                 //削除
                 case 3:
                     service.showTask();
-                    System.out.println("削除する番号を選択してください");
+                    System.out.print("削除する番号を選択してください：");
                     int deleteNum = sc.nextInt();
                     service.deleteTask(deleteNum);
                     break;
+                //タスク完了
+                case  4:
+                    service.showTask();
+                    System.out.print("完了する番号を選択してください：");
+                    int completeNum = sc.nextInt();
+                    service.toggleCompleted(completeNum);
+                    break;
                 //終了
                 case 0:
-                    System.out.println("アプリを終了します。");
+                    System.out.print("アプリを終了します。");
                     return;
+                default:
+                    System.out.println("0～4を入力してください。");
             }
         }
     }

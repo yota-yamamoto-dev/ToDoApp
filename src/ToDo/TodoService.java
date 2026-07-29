@@ -15,9 +15,23 @@ public class TodoService {
 
     //一覧表示
     public void showTask() {
+        if (todoList.isEmpty()){
+            System.out.println("タスクはありません。");
+            return;
+        }
         System.out.println("===== タスク一覧 =====");
         for (int i = 0; i < todoList.size(); i++) {
-            System.out.println((i + 1) + ". " + todoList.get(i).getTask());
+            Todo todo = todoList.get(i);
+
+            String mark;
+
+            if (todo.isCompleted()){
+                mark = "[✓]";
+            } else {
+                mark = "[ ]";
+            }
+
+            System.out.println((i + 1) + ". " + mark + " " + todo.getTask());
         }
     }
 
@@ -26,6 +40,22 @@ public class TodoService {
         if (deleteNum >= 1 && deleteNum <= todoList.size()) {
             Todo removedTask = todoList.remove(deleteNum - 1);
             System.out.println("「" + removedTask.getTask() + "」を削除しました。");
+        } else {
+            System.out.println("存在しない番号です。");
+        }
+    }
+
+    public void toggleCompleted(int number){
+        if (number >= 1 && number <= todoList.size()){
+            Todo todo = todoList.get(number - 1);
+            todo.setCompleted(!todo.isCompleted());
+
+            if (todo.isCompleted()){
+                System.out.println("「" + todo.getTask() + "」を完了にしました。");
+            } else {
+                System.out.println("「" + todo.getTask() + "」を未完了にしました。");
+            }
+
         } else {
             System.out.println("存在しない番号です。");
         }
