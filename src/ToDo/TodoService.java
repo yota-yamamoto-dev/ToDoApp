@@ -45,6 +45,7 @@ public class TodoService {
         }
     }
 
+    //完了切替
     public void toggleCompleted(int number){
         if (number >= 1 && number <= todoList.size()){
             Todo todo = todoList.get(number - 1);
@@ -56,6 +57,18 @@ public class TodoService {
                 System.out.println("「" + todo.getTask() + "」を未完了にしました。");
             }
 
+        } else {
+            System.out.println("存在しない番号です。");
+        }
+    }
+
+    //編集
+    public void editTask(int number, String newTask){
+        if (number >= 1 && number <= todoList.size()){
+            Todo todo = todoList.get(number - 1);
+            String oldTask = todo.getTask();
+            todo.setTask(newTask);
+            System.out.println("「" + oldTask + "」を「" + newTask + "」に変更しました。");
         } else {
             System.out.println("存在しない番号です。");
         }

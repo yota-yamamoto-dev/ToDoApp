@@ -17,6 +17,7 @@ public class Main {
             System.out.println("2. タスク一覧");
             System.out.println("3. タスク削除");
             System.out.println("4. 完了切替");
+            System.out.println("5. タスク編集");
             System.out.println("0. 終了");
             System.out.println();
 
@@ -51,12 +52,20 @@ public class Main {
                     int completeNum = sc.nextInt();
                     service.toggleCompleted(completeNum);
                     break;
+                case 5:
+                    service.showTask();
+                    System.out.print("編集する番号を選択してください：");
+                    int editNum = sc.nextInt();
+                    System.out.print("新しいタスク名：");
+                    String newTask = sc.next();
+                    service.editTask(editNum, newTask);
+                    break;
                 //終了
                 case 0:
                     System.out.print("アプリを終了します。");
                     return;
                 default:
-                    System.out.println("0～4を入力してください。");
+                    System.out.println("0～5を入力してください。");
             }
         }
     }

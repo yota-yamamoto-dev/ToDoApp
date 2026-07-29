@@ -1,7 +1,7 @@
 package ToDo;
 
 public class Todo {
-    private final String task;
+    private String task;
     private boolean completed;
 
     public Todo(String task) {
@@ -11,6 +11,10 @@ public class Todo {
 
     public String getTask() {
         return task;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
     }
 
     public boolean isCompleted() {
